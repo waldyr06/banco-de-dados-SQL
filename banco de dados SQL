@@ -42,6 +42,41 @@ INSERT INTO products (id, name, description, quantity, price) VALUES
   (7, 'Porsche 718', 'Ano 2022, Novo 0 KM', 3, 519000),
   (8, 'Dodge Challenger Hellcat', 'Ano 2022, Seminovo 243 KM', 1, 379000),
   (9, 'BMW M3', 'Ano 2017, Semiusado 1252 KM', 1, 344000),
+
+
+
+
+//nao copie essa linha//
+//essa parte abaixo coloque em "stdin" e aperte em run//
+select 
+u.id as "Código",
+u.name as "Vendedor",
+u.email as "E-Mail",
+u.age as "Idade"
+from
+users as u
+order by u.name;
+
+select
+p.id as "Referencial",
+p.name as "Modelo do Veículo",
+p.description as "Descrição",
+p.quantity as "Quantidade",
+p.price as "Preço"
+from
+products as p
+order by p.price;
+
+select
+u.name as "Vendedor",
+p.name as " Modelo do Veículo",
+o.quantity as "Quantidade",
+o.date_ordered as "Data do Pedido"
+from
+orders as o
+join products as p on p.id = o.product_id
+join users as u on u.id = o.user_id
+order by u.name
   (10, 'BMW X6', 'Ano 2022, Novo 0 KM', 6, 744000);
 
 INSERT INTO orders (id, user_id, product_id, quantity, date_ordered) VALUES 
