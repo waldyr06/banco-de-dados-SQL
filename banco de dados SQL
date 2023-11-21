@@ -1,0 +1,51 @@
+CREATE TABLE products (
+  id INT PRIMARY KEY,
+  name VARCHAR (50),
+  description TEXT,
+  quantity INT,
+  price DECIMAL (10, 2)
+);
+  
+CREATE TABLE users (
+    id INT PRIMARY KEY,
+    name VARCHAR (100),
+    email VARCHAR (70),
+    age INT
+);
+    
+CREATE TABLE orders (
+      id INT PRIMARY KEY,
+      user_id INT,
+      product_id INT,
+      quantity INT,
+      date_ordered DATE,
+      FOREIGN KEY (user_id) REFERENCES users(id),
+      FOREIGN KEY (product_id) REFERENCES products(id)
+);
+
+INSERT INTO users (id, name, email, age) VALUES
+  (1, 'Christian', 'christian@example.com', 16),
+  (2, 'Waldyr', 'waldyr@example.com', 16),
+  (3, 'Aguinelio', 'aguinelio@example.com', 23),
+  (4, 'Elma Maria', 'elmaria@example.com', 20),
+  (5, 'Jacinto', 'jacinto@example.com', 32),
+  (6, 'Clériton', 'cleriton@example.com', 18),
+  (7, 'Augusto', 'augusto@example.com', 27);
+
+INSERT INTO products (id, name, description, quantity, price) VALUES
+  (1, 'Mustang GT', 'Ano 2022, Novo 0 KM', 9, 566300),
+  (2, 'Ferrari 458', 'Ano 2023, Novo 10 KM', 3, 2997000),
+  (3, 'Lamborghini Aventador', 'Ano 2023, Novo 0 KM', 2, 8200000),
+  (4, 'Lamborghini SVJ', 'Ano 2023, Novo 0 KM', 1, 2200000),
+  (5, 'Lamborghini Urus', 'Ano 2023, Novo 0 KM', 5, 1023850),
+  (6, 'Porsche Carrera GTS', 'Ano 2022, Novo 0 KM', 2, 989000),
+  (7, 'Porsche 718', 'Ano 2022, Novo 0 KM', 3, 519000),
+  (8, 'Dodge Challenger Hellcat', 'Ano 2022, Seminovo 243 KM', 1, 379000),
+  (9, 'BMW M3', 'Ano 2017, Semiusado 1252 KM', 1, 344000),
+  (10, 'BMW X6', 'Ano 2022, Novo 0 KM', 6, 744000);
+
+INSERT INTO orders (id, user_id, product_id, quantity, date_ordered) VALUES 
+  (1, 2, 1, 1, '2023-04-24'),
+  (2, 1, 1, 1, '2023-04-24'),
+  (3, 7, 2, 1, '2023-04-25'),
+  (4, 4, 1, 2, '2023-04-27');
